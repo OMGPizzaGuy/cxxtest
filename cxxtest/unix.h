@@ -13,7 +13,7 @@
 #define UNIX_ERROR_PRINTER_H_N4C6JUX4
 
 #ifndef _CXXTEST_HAVE_STD
-#   define _CXXTEST_HAVE_STD
+#   error "UNIXErrorFormatter can't be used without std"
 #endif // _CXXTEST_HAVE_STD
 
 #include <cxxtest/Flags.h>

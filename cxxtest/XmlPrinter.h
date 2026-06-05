@@ -21,7 +21,7 @@
 #include <cxxtest/Flags.h>
 
 #ifndef _CXXTEST_HAVE_STD
-#   define _CXXTEST_HAVE_STD
+#   error "XmlPrinter can't be used without std"
 #endif // _CXXTEST_HAVE_STD
 
 #include <cxxtest/XmlFormatter.h>
