@@ -42,26 +42,8 @@ public:
     ErrorPrinter(CXXTEST_STD(ostream) &o = CXXTEST_STD(cout), const char *preLine = ":", const char *postLine = "",
                  const char *errorString = "Error",
                  const char *warningString = "Warning") :
-        ErrorFormatter(new Adapter(o), preLine, postLine, errorString, warningString) {}
-    virtual ~ErrorPrinter() { delete outputStream(); }
+        ErrorFormatter(new StdOStreamAdapter(o), preLine, postLine, errorString, warningString) {}
 
-private:
-    class Adapter : public OutputStream
-    {
-        CXXTEST_STD(ostream) &_o;
-    public:
-        Adapter(CXXTEST_STD(ostream) &o) : _o(o) {}
-        void flush() { _o.flush(); }
-        OutputStream &operator<<(const char *s) { _o << s; return *this; }
-        OutputStream &operator<<(Manipulator m) { return OutputStream::operator<<(m); }
-        OutputStream &operator<<(unsigned i)
-        {
-            char s[1 + 3 * sizeof(unsigned)];
-            numberToString(i, s);
-            _o << s;
-            return *this;
-        }
-    };
 };
 }
 
